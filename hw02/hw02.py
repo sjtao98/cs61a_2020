@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[16]:
 
 
 #Q1: Num eights
@@ -43,7 +43,7 @@ def num_eights(x):
             
 
 
-# In[2]:
+# In[17]:
 
 
 print(num_eights(3) == 0)
@@ -54,7 +54,7 @@ print(num_eights(86380) == 2)
 print(num_eights(12345) == 0)
 
 
-# In[3]:
+# In[18]:
 
 
 #Q2: ping-pong
@@ -116,7 +116,7 @@ def direction(x):
     return direction(x-1)
 
 
-# In[4]:
+# In[19]:
 
 
 print(pingpong(8) == 8)
@@ -133,7 +133,7 @@ print(pingpong(82) == 0)
 print(pingpong(100) == -6)
 
 
-# In[5]:
+# In[20]:
 
 
 #Q3: Missing Digits
@@ -184,7 +184,7 @@ def missing_digits(n):
     return missing_digits(rest) + max(last - (rest % 10 + 1), 0)
 
 
-# In[6]:
+# In[21]:
 
 
 print(missing_digits(1248) == 4)
@@ -198,7 +198,7 @@ print(missing_digits(19) == 7)
 print(missing_digits(4) == 0)
 
 
-# In[3]:
+# In[22]:
 
 
 #Q4: Count coins
@@ -268,7 +268,7 @@ def count_coins(total):
     return count_coins_helper(total, 1)
 
 
-# In[4]:
+# In[23]:
 
 
 print(count_coins(15) == 6)
@@ -277,7 +277,7 @@ print(count_coins(20) == 9)
 print(count_coins(100) == 242)
 
 
-# In[9]:
+# In[24]:
 
 
 #Q5: Anonymous factorial
@@ -311,18 +311,16 @@ def make_anonymous_factorial():
     >>> check(HW_SOURCE_FILE, 'make_anonymous_factorial', ['Assign', 'AugAssign', 'FunctionDef', 'Recursion'])
     True
     """
-    fact = lambda n: 1 if n == 1 else mul(n, fact(sub(n, 1)))
-    
-    return fact
+    return lambda n: (lambda f: f(n,f))(lambda n,fact: 1 if n == 1 else mul(n, fact(n-1, fact)))
 
 
-# In[10]:
+# In[25]:
 
 
 print(make_anonymous_factorial()(5) == 120)
 
 
-# In[11]:
+# In[26]:
 
 
 #Towers of Hanoi
@@ -367,7 +365,7 @@ def move_stack(n, start, end):
         move_stack(n-1, spare, end)
 
 
-# In[12]:
+# In[27]:
 
 
 move_stack(3, 1, 3)
